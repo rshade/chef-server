@@ -1,0 +1,1 @@
+default["chef-server-blueprint"]["version"] = :latest

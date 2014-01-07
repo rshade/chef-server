@@ -1,0 +1,10 @@
+{
+  "sources": {
+    "chef-server-blueprint": {
+      "path": "./cookbook/chef-server-blueprint"
+    },
+    "chef-server": {
+      "locked_version": "2.0.1"
+    }
+  }
+}
