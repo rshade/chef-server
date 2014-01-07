@@ -13,6 +13,8 @@ depends "chef-server"
   supports os
 end
 
+recipe "chef-server-blueprint::default", "Same as chef-server::default, but with inputs"
+
 attribute "chef-server-blueprint/api_fqdn",
     :display_name => "Chef Server FQDN",
     :required => "required"
