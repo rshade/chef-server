@@ -29,7 +29,7 @@ else
     action :create_if_missing
   end
   
-  log "*** Setting #{node['chef-server']['package_file']} to /root/#{filename}"
+  log "*** Setting node['chef-server']['package_file'] to /root/#{filename}"
   node['chef-server']['package_file']="/root/#{filename}"
 end
   
