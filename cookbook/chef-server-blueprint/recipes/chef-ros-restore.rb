@@ -48,10 +48,11 @@ bash "*** Downloading latest backup from '#{container}/chef-backups/', cloud #{c
     tmp_dir=`mktemp -d`
     /opt/rightscale/sandbox/bin/ros_util get --cloud #{cloud}\
                                              --container #{container}\
-                                             --dest $tmp_dir/\
+                                             --dest $tmp_dir/chef-backup.tar.bz2\
                                              --source #{prefix} --latest
-    #{backup_script} --restore $tmp_dir/*
+    #{backup_script} --restore $tmp_dir/chef-backup.tar.bz2
   EOH
 end
 
 rightscale_marker :end
+
