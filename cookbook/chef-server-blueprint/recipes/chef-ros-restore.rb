@@ -49,7 +49,7 @@ bash "*** Downloading latest backup from '#{container}/chef-backups/', cloud #{c
     /opt/rightscale/sandbox/bin/ros_util get --cloud #{cloud}\
                                              --container #{container}\
                                              --dest $tmp_dir/chef-backup.tar.bz2\
-                                             --source #{prefix} --latest
+                                             --source chef-backups/#{prefix} --latest
     chmod +x #{backup_script}
     #{backup_script} --restore $tmp_dir/chef-backup.tar.bz2
   EOH
