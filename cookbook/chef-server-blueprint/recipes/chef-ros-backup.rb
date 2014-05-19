@@ -47,7 +47,7 @@ bash "*** Uploading '#{backup_src}' to '#{cloud}' container '#{container}/chef-b
   user "root"
   environment environment_variables
   code <<-EOH
-    #{backup_script}
+    #{backup_script} --backup
     /opt/rightscale/sandbox/bin/ros_util put --container #{container} --cloud #{cloud} --source #{backup_src} --dest "chef-backups/#{backup_dst}"
   EOH
 end
