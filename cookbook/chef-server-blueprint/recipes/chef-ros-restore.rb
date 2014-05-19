@@ -18,6 +18,8 @@ end
 
 container = node[:chef-server-blueprint][:backup][:container]
 cloud = node[:chef-server-blueprint][:backup][:storage_account_provider]
+prefix = node[:chef-server-blueprint][:backup][:lineage]
+backup_script = ::File.join(::File.dirname(__FILE__), "..", "files", "default", "chef-backup.sh")
 
 # Overrides default endpoint or for generic storage clouds such as Swift.
 # Is set as ENV['STORAGE_OPTIONS'] for ros_util.
@@ -38,6 +40,18 @@ environment_variables = {
   'STORAGE_ACCOUNT_SECRET' => node[:chef-server-blueprint][:backup][:storage_account_secret]
 }.merge(options)
 
-backup_script = ::File.join(::File.dirname(__FILE__), "..", "files", "default", "chef-backup.sh")
+bash "*** Downloading latest backup from '#{container}/chef-backups/', cloud #{cloud}" do
+  flags "-ex"
+  user "root"
+  environment environment_variables
+  code <<-EOH
+    tmp_dir=`mktemp -d`
+    /opt/rightscale/sandbox/bin/ros_util get --cloud #{cloud}\
+                                             --container #{container}\
+                                             --dest $tmp_dir\
+                                             --source #{prefix} --latest
+    #{backup_script} --restore $tmp_dir/*
+  EOH
+end
 
 rightscale_marker :end
