@@ -50,6 +50,7 @@ bash "*** Downloading latest backup from '#{container}/chef-backups/', cloud #{c
                                              --container #{container}\
                                              --dest $tmp_dir/chef-backup.tar.bz2\
                                              --source #{prefix} --latest
+    chmod +x #{backup_script}
     #{backup_script} --restore $tmp_dir/chef-backup.tar.bz2
   EOH
 end
