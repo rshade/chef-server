@@ -21,13 +21,13 @@ recipe "chef-server-blueprint::backup_schedule_disable", "Disables chef-server-b
 
 attribute "chef-server-blueprint/api_fqdn",
     :display_name => "Chef Server FQDN",
-    :required => "required"
+    :required => "required",
     :recipes => [ "chef-server-blueprint::default" ]
 
 attribute "chef-server-blueprint/version",
     :display_name => "Chef Server Version",
     :required => "optional",
-    :default => "latest"
+    :default => "latest",
     :recipes => [ "chef-server-blueprint::default" ]
     
 attribute "chef-server-blueprint/remote_file",
