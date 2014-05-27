@@ -11,7 +11,8 @@ All the same ones chef-server supports
 #### Cookbooks
 - `chef-server` - Like I said, this is just a thin wrapper.
 
-#### Recipes
+Recipes
+----------
 <table>
   <tr>
     <th>name</th>
