@@ -1,6 +1,6 @@
 chef-server-blueprint Cookbook
 ==============================
-This is just a very thin wrapper around chef-server::default which allows me to pass in attribute overrides through RightScale.  I.E. It specifies a couple attributes in the metadata.rb so that RightScale can parse it and present it to the user.
+This is a thin wrapper around chef-server::default which allows me to pass in attribute overrides through RightScale.  I.E. It specifies a couple attributes in the metadata.rb so that RightScale can parse it and present it to the user. Also contains chef-server backup and restore recipes.
 
 Requirements
 ------------
