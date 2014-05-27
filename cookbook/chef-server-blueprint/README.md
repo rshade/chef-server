@@ -1,6 +1,6 @@
 chef-server-blueprint Cookbook
 ==============================
-This is just a very thin wrapper around chef-server::default which allows me to pass in attribute overrides through RightScale.  I.E. It specifies a couple attributes in the metadata.rb so that RightScale can parse it and present it to the user.
+This is a thin wrapper around chef-server::default which allows me to pass in attribute overrides through RightScale.  I.E. It specifies a couple attributes in the metadata.rb so that RightScale can parse it and present it to the user. Also contains chef-server backup and restore recipes.
 
 Requirements
 ------------
@@ -10,6 +10,36 @@ All the same ones chef-server supports
 
 #### Cookbooks
 - `chef-server` - Like I said, this is just a thin wrapper.
+
+Recipes
+----------
+<table>
+  <tr>
+    <th>name</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><tt>default</tt></td>
+    <td>Thin wrapper around chef-server::default which allows me to pass in attribute overrides through RightScale</td>
+  </tr>
+  <tr>
+    <td><tt>chef-ros-backup</tt></td>
+    <td>Backup chef server to Remote Object Storage(ex: AWS S3, RackSpace CloudFiles, etc)</td>
+  </tr>
+  <tr>
+    <td><tt>chef-ros-restore</tt></td>
+    <td>Restore chef server from a  Remote Object Storage(ex: AWS S3, RackSpace CloudFiles, etc) backup</td>
+  </tr>
+  <tr>
+    <td><tt>backup_schedule_enable</tt></td>
+    <td>Enables chef-server-blueprint::chef-ros-backup to be run hourly.</td>
+  </tr>
+  <tr>
+    <td><tt>backup_schedule_disable</tt></td>
+    <td>Disables chef-server-blueprint::chef-ros-backup from being run hourly.</td>
+  </tr>
+</table>
+
 
 Attributes
 ----------
@@ -36,6 +66,12 @@ It's in the metadata, which is the whole purpose of this cookbook, but...
     <td>Chef Server Version</td>
     <td><tt>:latest</tt></td>
   </tr>
+  <tr>
+    <td><tt>['chef-server-blueprint']['remote_file']</tt></td>
+    <td>String</td>
+    <td>Chef Server Binary URL</td>
+    <td><tt>none</tt></td>
+  </tr> 
 </table>
 
 Usage
