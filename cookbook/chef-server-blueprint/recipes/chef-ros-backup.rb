@@ -40,7 +40,7 @@ environment_variables = {
 }.merge(options)
 
 backup_src = "/var/backups/chef-backup/chef-backup.tar.bz2"
-backup_dst = node['chef-server-blueprint']['backup']['lineage'] + "-" + Time.now.strftime("%Y%m%d%H%M") + ".tar.gz"
+backup_dst = node['chef-server-blueprint']['backup']['lineage'] + "-" + Time.now.strftime("%Y%m%d%H%M") + ".tar.bz2"
 
 bash "*** Uploading '#{backup_src}' to '#{cloud}' container '#{container}/chef-backups/#{backup_dst}'" do
   flags "-ex"
