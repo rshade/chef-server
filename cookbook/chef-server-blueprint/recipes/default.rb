@@ -36,4 +36,14 @@ end
 log "*** Including recipe chef-server::default"
 include_recipe "chef-server::default"
 
+log "*** Adding Paths to system"
+
+cookbook_file "/etc/profile.d/chef-server.sh" do
+  source "chef-server-profile.sh"
+  owner "root"
+  group "root"
+  mode 0777
+  action :create
+end
+
 rightscale_marker :end
